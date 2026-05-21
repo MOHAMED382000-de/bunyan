@@ -9,15 +9,16 @@ import Projects from "./Projects";
 import Developers from "./Developers";
 import TableDashboard from "../../components/ui/TableDashboard/TableDashboard";
 import FormDashboard from "../../components/ui/FormDashboard/FormDashboard";
+import useNotification from "../../hooks/useNotification";
 
 function Dashboard() {
-  const [isTyping, setIsTyping] = useState(false);
+  const { hasNewData } = useNotification();
 
   return (
     <>
       <Navbar adminName="mohamed elsafy" />
       <div className="d-flex">
-        <Sidebar isTyping={isTyping} />
+        <Sidebar isTyping={hasNewData } />
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<HomeDashboard />} />

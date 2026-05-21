@@ -1,4 +1,9 @@
+
+import useNotification from './../../../hooks/useNotification';
+
 export default function FormDashboard() {
+  const { notify, clearNotification } = useNotification();
+
   return (
     <div className="container">
       <form className="vh">
@@ -11,6 +16,8 @@ export default function FormDashboard() {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            onChange={notify}
+            onBlur={clearNotification}
           />
           <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -25,23 +32,19 @@ export default function FormDashboard() {
             type="password"
             className="form-control"
             id="exampleInputPassword1"
+            onChange={notify}
+            onBlur={clearNotification}
           />
         </div>
 
         <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
+          <input type="checkbox" className="form-check-input" id="exampleCheck1" />
           <label className="form-check-label" htmlFor="exampleCheck1">
             Check me out
           </label>
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
